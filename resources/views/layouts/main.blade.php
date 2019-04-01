@@ -13,6 +13,7 @@
 	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/slider.css">
 
 	<!-- Custom styles for our template -->
 	<link rel="stylesheet" href="assets/css/bootstrap-theme.css" media="screen" >
@@ -24,24 +25,24 @@
 
 <body class="home">
     <!-- Fixed navbar -->
-    <div class="navbar navbar-inverse navbar-fixed-top headroom">
+    <div class="navbar navbar-inverse navbar-fixed-top headroom ">
         <div class="container">
             <div class="navbar-header">
                 <!-- Button for smallest screens -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                <a class="navbar-brand" href="{{ url('/') }}"><img src="assets/images/logo.png" alt="Progressus HTML5 template"></a>
+                <a class="navbar-brand" href="{{ url('/') }}"><img src="uploads/logos/1552905418.jpg" alt="E-WASH" width="100px" height="50px"></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right">
-                    <li class="active"><a href="{{ url('/') }}">Home</a></li>
-                    <li><a href="{{ url('about') }}">About</a></li>
+                    <li><a href="{{ url('/') }}">Accueil</a></li>
+                    <li><a href="{{ url('about') }}">A propos</a></li>
                     <li><a href="{{ url('/contact') }}">Contact</a></li>
                     @if (Route::has('login'))
                     <div class="btn">
                         @auth
                         <a href="{{ url('/home') }}">Desktop</a>
                         @else
-                        <a href="{{ route('login') }}">SIGN IN / SIGN UP</a>
+                        <a href="{{ route('login') }}" class="navbar-link">SIGN IN / SIGN UP</a>
                         @endauth
                     </div>
                     @endif
@@ -62,13 +63,21 @@
                 <div class="row">
 
                     <div class="col-md-3 widget">
-                        <h3 class="widget-title">Contact</h3>
+                        <h3 class="widget-title"><div style="text-align: center;"><i class="fa fa-phone"></i></div></h3>
                         <div class="widget-body">
-                            <p>+234 23 9873237<br>
-                                <a href="mailto:#">some.email@somewhere.com</a><br>
-                                <br>
-                                234 Hidden Pond Road, Ashland City, TN 37015
-                            </p>
+                            <p><div style="text-align: center;">(+225) 74622582/22469017 </div><br>
+                        </div>
+                    </div>
+                    <div class="col-md-3 widget">
+                        <h3 class="widget-title"><div style="text-align: center;"><i class="fa fa-envelope"></i></div> </h3>
+                        <div class="widget-body">
+                            <a href="mailto:#"><div style="text-align: center;">infos@reseaudigitaltechnologies-ci.com</div> </a><br>
+                        </div>
+                    </div>
+                    <div class="col-md-3 widget">
+                        <h3 class="widget-title"><div style="text-align: center;"><i class="fa fa-map-marker"></i> </div></h3>
+                        <div class="widget-body">
+                            <div style="text-align: center;"> Abidjan Cocody- Riviera Faya, route ancien camp</div>
                         </div>
                     </div>
 
@@ -76,21 +85,13 @@
                         <h3 class="widget-title">Follow me</h3>
                         <div class="widget-body">
                             <p class="follow-me-icons">
-                                <a href=""><i class="fa fa-twitter fa-2"></i></a>
-                                <a href=""><i class="fa fa-dribbble fa-2"></i></a>
-                                <a href=""><i class="fa fa-github fa-2"></i></a>
-                                <a href=""><i class="fa fa-facebook fa-2"></i></a>
+                                <a href="http://www.reseaudigitaltechnologies-ci.com/contactez-nous/"><i class="fa fa-envelope fa-2"></i></a>
+                                <a href="https://www.linkedin.com/company/reseau-digital-technologies"><i class="fa fa-linkedin fa-2"></i></a>
+                                <a href="https://web.facebook.com/Reseau-Digital-Technologies-237367473570558"><i class="fa fa-facebook fa-2"></i></a>
                             </p>
                         </div>
                     </div>
 
-                    <div class="col-md-6 widget">
-                        <h3 class="widget-title">Text widget</h3>
-                        <div class="widget-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, dolores, quibusdam architecto voluptatem amet fugiat nesciunt placeat provident cumque accusamus itaque voluptate modi quidem dolore optio velit hic iusto vero praesentium repellat commodi ad id expedita cupiditate repellendus possimus unde?</p>
-                            <p>Eius consequatur nihil quibusdam! Laborum, rerum, quis, inventore ipsa autem repellat provident assumenda labore soluta minima alias temporibus facere distinctio quas adipisci nam sunt explicabo officia tenetur at ea quos doloribus dolorum voluptate reprehenderit architecto sint libero illo et hic.</p>
-                        </div>
-                    </div>
 
                 </div> <!-- /row of widgets -->
             </div>
@@ -129,6 +130,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="assets/js/headroom.min.js"></script>
+    <script src="assets/js/slider.js"></script>
     <script src="assets/js/jQuery.headroom.min.js"></script>
     <script src="assets/js/template.js"></script>
 </body>

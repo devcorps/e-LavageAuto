@@ -8,9 +8,10 @@
 <header id="head">
     <div class="container">
         <div class="row">
-            <h1 class="lead">AWESOME, CUSTOMIZABLE, FREE</h1>
-            <p class="tagline">E-Lavage is free business dashbord designed by <a href="http://www.reseaudigitaltechnologies-ci.com/">Reseau Digital Technologies</a></p>
-            <p><a href="{{url('about')}}" class="btn btn-default btn-lg" role="button">MORE INFO</a></p>
+            <h1 ><span style="color: black; ">E-WASH</span></h1>
+            <h2 class="tagline"><span style="color: black; ">E-Lavage est un service de gestion de station automobile en ligne développée par</span>
+                    <a href="http://www.reseaudigitaltechnologies-ci.com/"><span style="color: black; ">Reseau Digital Technologies</span></a></h2>
+            <p><a href="{{url('about')}}" class="btn btn-default btn-lg" role="button"><span style="color: black; ">PLUS D'INFO</span></a></p>
         </div>
     </div>
 </header>
@@ -19,43 +20,120 @@
 <!-- Intro -->
 <div class="container text-center">
     <br> <br>
-    <h2 class="thin">The best place to tell people why they are here</h2>
+    <h2 class="thin">E-WASH, plateforme N°1 de gestion des stations lavages</h2>
     <p class="text-muted">
-        The difference between involvement and commitment is like an eggs-and-ham breakfast:<br>
-        the chicken was involved; the pig was committed.
+       La prémiere plateforme plateforme en côte d'ivoire qui vous permettra de gérer toute vos activité<br>
+    liées a votre station de lavage automobile, facilement et rapidement
     </p>
 </div>
 <!-- /Intro-->
+
+<div class="slider" id="slider" style="">
+    <div class="slider__content" id="slider-content">
+        <div class="slider__images">
+            <div class="slider__images-item slider__images-item--active" data-id="1"><img src="assets/images/car.jpg"/></div>
+            <div class="slider__images-item" data-id="2"><img src="assets/images/washci.jpeg"/></div>
+            <div class="slider__images-item" data-id="3"><img src="assets/images/lavag.jpg"/></div>
+            <div class="slider__images-item" data-id="4"><img src="assets/images/lav.jpg"/></div>
+            <div class="slider__images-item" data-id="5"><img src="assets/images/lav1.jpg"/></div>
+        </div>
+        <div class="slider__text">
+            <div class="slider__text-item slider__text-item--active" data-id="1">
+                <div class="slider__text-item-head">
+                    <h3>E-WASH</h3>
+                </div>
+                <div class="slider__text-item-info">
+                    <p>“La première application de gestion de station de lavage automobile”</p>
+                </div>
+            </div>
+            <div class="slider__text-item" data-id="2">
+                <div class="slider__text-item-head">
+                    <h3>E-WASH</h3>
+                </div>
+                <div class="slider__text-item-info">
+                    <p>“La première application de gestion de station de lavage automobile”</p>
+                </div>
+            </div>
+            <div class="slider__text-item" data-id="3">
+                <div class="slider__text-item-head">
+                    <h3>E-WASH</h3>
+                </div>
+                <div class="slider__text-item-info">
+                    <p>“La première application de gestion de station de lavage automobile”</p>
+                </div>
+            </div>
+            <div class="slider__text-item" data-id="4">
+                <div class="slider__text-item-head">
+                    <h3>E-WASH</h3>
+                </div>
+                <div class="slider__text-item-info">
+                    <p>“La première application de gestion de station de lavage automobile”</p>
+                </div>
+            </div>
+            <div class="slider__text-item" data-id="5">
+                <div class="slider__text-item-head">
+                    <h3>E-WASH</h3>
+                </div>
+                <div class="slider__text-item-info">
+                    <p>“La première application de gestion de station de lavage automobile”</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slider__nav">
+        <div class="slider__nav-arrows">
+            <div class="slider__nav-arrow slider__nav-arrow--left" id="left">to left</div>
+            <div class="slider__nav-arrow slider__nav-arrow--right" id="right">to right</div>
+        </div>
+        <div class="slider__nav-dots" id="slider-dots">
+            <div class="slider__nav-dot slider__nav-dot--active" data-id="1"></div>
+            <div class="slider__nav-dot" data-id="2"></div>
+            <div class="slider__nav-dot" data-id="3"></div>
+            <div class="slider__nav-dot" data-id="4"></div>
+            <div class="slider__nav-dot" data-id="5"></div>
+        </div>
+    </div>
+</div>
 
 <!-- Highlights - jumbotron -->
 <div class="jumbotron top-space">
     <div class="container">
 
-        <h3 class="text-center thin">Reasons to use this template</h3>
+        <h3 class="text-center thin">Pourquoi utiliser notre plateforme?</h3>
 
         <div class="row">
-            <div class="col-md-3 col-sm-6 highlight">
-                <div class="h-caption"><h4><i class="fa fa-cogs fa-5"></i>Bootstrap-powered</h4></div>
-                <div class="h-body text-center">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?</p>
+            <div class="col-md-4 col-sm-6 highlight">
+                <div class="h-caption"><h4><i class="fa fa-cogs fa-5"></i>Nos services</h4></div>
+                <div class="h-body ">
+                    <p>Enregistrement de vehicule avec toutes ses informations y compris celles du conducteur</p>
+                    <p>Enregistrement de passage de vehicule</p>
+                    <p>Génération de facture par sms après chaque lavage</p>
+                    <p>Possibilité de fideliser vos clients</p>
+                    <p>Possibilité de voir le reporting de toutes vos activité</p>
+                    <p>Abonnement par mois pour pouvoir profiter plienement de notre plateforme</p>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6 highlight">
-                <div class="h-caption"><h4><i class="fa fa-flash fa-5"></i>Fat-free</h4></div>
+            <div class="col-md-4 col-sm-6 highlight">
+                <div class="h-caption"><h4><i class="fa fa-flash fa-5"></i>Rapidité</h4></div>
                 <div class="h-body text-center">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, commodi, sequi quis ad fugit omnis cumque a libero error nesciunt molestiae repellat quos perferendis numquam quibusdam rerum repellendus laboriosam reprehenderit! </p>
+                    <p>Utilisation facile et très fluide de la plateforme</p>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6 highlight">
-                <div class="h-caption"><h4><i class="fa fa-heart fa-5"></i>Creative Commons</h4></div>
-                <div class="h-body text-center">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, vitae, perferendis, perspiciatis nobis voluptate quod illum soluta minima ipsam ratione quia numquam eveniet eum reprehenderit dolorem dicta nesciunt corporis?</p>
+            <div class="col-md-2 col-sm-6 highlight">
+                <div class="h-caption ">
+                    <div class="widget-body">
+                        <p class="follow-me-icons">
+                            <i class="fa fa-mobile-phone fa-5"></i>
+                            <i class="fa fa-tablet fa-5"></i>
+                            <i class="fa fa-desktop fa-5"></i>
+                        </p>
+                        <br><br><br><br>
+                        <h4>Accecible sur plusieurs écrans</h4>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-3 col-sm-6 highlight">
-                <div class="h-caption"><h4><i class="fa fa-smile-o fa-5"></i>Author's support</h4></div>
                 <div class="h-body text-center">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, excepturi, maiores, dolorem quasi reprehenderit illo accusamus nulla minima repudiandae quas ducimus reiciendis odio sequi atque temporibus facere corporis eos expedita? </p>
+
+                    <p>Note plateforme est responsive, c'est a dire qu'elle est capable de s'afficher correctement sur n'importe quel écran. </p>
                 </div>
             </div>
         </div> <!-- /row  -->
@@ -67,41 +145,6 @@
 <!-- container -->
 <div class="container">
 
-    <h2 class="text-center top-space">Frequently Asked Questions</h2>
-    <br>
-
-    <div class="row">
-        <div class="col-sm-6">
-            <h3>Which code editor would you recommend?</h3>
-            <p>I'd highly recommend you <a href="http://www.sublimetext.com/">Sublime Text</a> - a free to try text editor which I'm using daily. Awesome tool!</p>
-        </div>
-        <div class="col-sm-6">
-            <h3>Nice header. Where do I find more images like that one?</h3>
-            <p>
-                Well, there are thousands of stock art galleries, but personally,
-                I prefer to use photos from these sites: <a href="http://unsplash.com">Unsplash.com</a>
-                and <a href="http://www.flickr.com/creativecommons/by-2.0/tags/">Flickr - Creative Commons</a></p>
-        </div>
-    </div> <!-- /row -->
-
-    <div class="row">
-        <div class="col-sm-6">
-            <h3>Can I use it to build a site for my client?</h3>
-            <p>
-                Yes, you can. You may use this template for any purpose, just don't forget about the <a href="http://creativecommons.org/licenses/by/3.0/">license</a>,
-                which says: "You must give appropriate credit", i.e. you must provide the name of the creator and a link to the original template in your work.
-            </p>
-        </div>
-        <div class="col-sm-6">
-            <h3>Can you customize this template for me?</h3>
-            <p>Yes, I can. Please drop me a line to sergey-at-pozhilov.com and describe your needs in details. Please note, my services are not cheap.</p>
-        </div>
-    </div> <!-- /row -->
-
-    <div class="jumbotron top-space">
-        <h4>Dicta, nostrum nemo soluta sapiente sit dolor quae voluptas quidem doloribus recusandae facere magni ullam suscipit sunt atque rerum eaque iusto facilis esse nam veniam incidunt officia perspiciatis at voluptatibus. Libero, aliquid illum possimus numquam fuga.</h4>
-        <p class="text-right"><a class="btn btn-primary btn-large">Learn more »</a></p>
-    </div>
 
 </div>	<!-- /container -->
 
