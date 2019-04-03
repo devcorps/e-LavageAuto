@@ -1,6 +1,6 @@
 @extends('layouts.dashbord')
 
-@section('title', '| Reporting')
+@section('title', 'ReportingController')
 
 @section('stylesheet')
     <!-- Morris chart -->
@@ -60,8 +60,8 @@
                                 </p>
 
                                 <div class="progress-group">
-                                    <span class="progress-text">Clients</span>
-                                    <span class="progress-number"><b>160</b>/200</span>
+                                    <span class="progress-text">Passaages</span>
+                                    <span class="progress-number"><b>160</b></span>
 
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
@@ -69,8 +69,8 @@
                                 </div>
                                 <!-- /.progress-group -->
                                 <div class="progress-group">
-                                    <span class="progress-text">Passaages</span>
-                                    <span class="progress-number"><b>310</b>/400</span>
+                                    <span class="progress-text">Clients</span>
+                                    <span class="progress-number"><b>310</b></span>
 
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-red" style="width: 80%"></div>
@@ -79,7 +79,7 @@
                                 <!-- /.progress-group -->
                                 <div class="progress-group">
                                     <span class="progress-text">Fideles</span>
-                                    <span class="progress-number"><b>480</b>/800</span>
+                                    <span class="progress-number"><b>480</b></span>
 
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-green" style="width: 80%"></div>
@@ -94,41 +94,14 @@
                     <!-- ./box-body -->
                     <div class="box-footer">
                         <div class="row">
-                            <div class="col-sm-3 col-xs-6">
+                            <div class="col-sm-12 col-xs-12">
                                 <div class="description-block border-right">
-                                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>
                                     <h5 class="description-header">$35,210.43</h5>
                                     <span class="description-text">TOTAL REVENUE</span>
                                 </div>
                                 <!-- /.description-block -->
                             </div>
                             <!-- /.col -->
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="description-block border-right">
-                                    <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>
-                                    <h5 class="description-header">$10,390.90</h5>
-                                    <span class="description-text">TOTAL COST</span>
-                                </div>
-                                <!-- /.description-block -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="description-block border-right">
-                                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span>
-                                    <h5 class="description-header">$24,813.53</h5>
-                                    <span class="description-text">TOTAL PROFIT</span>
-                                </div>
-                                <!-- /.description-block -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="description-block">
-                                    <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>
-                                    <h5 class="description-header">1200</h5>
-                                    <span class="description-text">GOAL COMPLETIONS</span>
-                                </div>
-                                <!-- /.description-block -->
-                            </div>
                         </div>
                         <!-- /.row -->
                     </div>
@@ -160,7 +133,7 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
+                        <h3>53</h3>
 
                         <p>Vehicules</p>
                     </div>
@@ -253,40 +226,6 @@
                     <!-- /.box-footer -->
                 </div>
                 <!-- /.box -->
-                <!-- quick email widget -->
-                <div class="box box-info">
-                    <div class="box-header">
-                        <i class="fa fa-envelope"></i>
-
-                        <h3 class="box-title">Quick Messages</h3>
-                        <!-- tools box -->
-                        <div class="pull-right box-tools">
-                            <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip"
-                                    title="Remove">
-                                <i class="fa fa-times"></i></button>
-                        </div>
-                        <!-- /. tools -->
-                    </div>
-                    <div class="box-body">
-                        <form action="#" method="post">
-                            <div class="form-group">
-                                <input type="tel" class="form-control" name="telto" placeholder="Contact to:">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="subject" placeholder="Subject">
-                            </div>
-                            <div>
-                  <textarea class="textarea" placeholder="Message"
-                            style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="box-footer clearfix">
-                        <button type="button" class="pull-right btn btn-default" id="sendMessage">Send
-                            <i class="fa fa-arrow-circle-right"></i></button>
-                    </div>
-                </div>
-
             </section>
             <!-- /.Left col -->
             <!-- right col (We are only adding the ID to make the widgets sortable)-->
@@ -454,24 +393,6 @@
                     color    : '#f39c12',
                     highlight: '#f39c12',
                     label    : 'FireFox'
-                },
-                {
-                    value    : 600,
-                    color    : '#00c0ef',
-                    highlight: '#00c0ef',
-                    label    : 'Safari'
-                },
-                {
-                    value    : 300,
-                    color    : '#3c8dbc',
-                    highlight: '#3c8dbc',
-                    label    : 'Opera'
-                },
-                {
-                    value    : 100,
-                    color    : '#d2d6de',
-                    highlight: '#d2d6de',
-                    label    : 'Navigator'
                 }
             ]
             var pieOptions     = {
@@ -512,27 +433,17 @@
             var areaChart       = new Chart(areaChartCanvas)
 
             var areaChartData = {
-                labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                labels  : ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
                 datasets: [
                     {
-                        label               : 'Electronics',
+                        label               : 'Passages',
                         fillColor           : 'rgba(210, 214, 222, 1)',
-                        strokeColor         : 'rgba(210, 214, 222, 1)',
+                        strokeColor         : 'rgba(2, 74, 9, 1)',
                         pointColor          : 'rgba(210, 214, 222, 1)',
                         pointStrokeColor    : '#c1c7d1',
                         pointHighlightFill  : '#fff',
                         pointHighlightStroke: 'rgba(220,220,220,1)',
-                        data                : [65, 59, 80, 81, 56, 55, 40]
-                    },
-                    {
-                        label               : 'Digital Goods',
-                        fillColor           : 'rgba(60,141,188,0.9)',
-                        strokeColor         : 'rgba(60,141,188,0.8)',
-                        pointColor          : '#3b8bba',
-                        pointStrokeColor    : 'rgba(60,141,188,1)',
-                        pointHighlightFill  : '#fff',
-                        pointHighlightStroke: 'rgba(60,141,188,1)',
-                        data                : [28, 48, 40, 19, 86, 27, 90]
+                        data                : [65, 59, 80, 81, 56, 55, 40, 55, 77, 33, 11, 80]
                     }
                 ]
             }
