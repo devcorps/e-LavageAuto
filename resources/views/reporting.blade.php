@@ -46,7 +46,7 @@
                         <div class="row">
                             <div class="col-md-10">
                                 <p class="text-center">
-                                    <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+                                    <strong>Sales: 1 Jan, 2015 - 30 Jul, 2014</strong>
                                 </p>
 
                                 <div class="chart">
@@ -56,12 +56,12 @@
                             <!-- /.col -->
                             <div class="col-md-2">
                                 <p class="text-center">
-                                    <strong>Passages</strong>
+                                    <strong>Goal Completion</strong>
                                 </p>
 
                                 <div class="progress-group">
-                                    <span class="progress-text">Aujourd'hui</span>
-                                    <span class="progress-number"><b>{{$passages->daily}}</b></span>
+                                    <span class="progress-text">Passaages</span>
+                                    <span class="progress-number"><b>{{$passage}}</b></span>
 
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
@@ -69,8 +69,8 @@
                                 </div>
                                 <!-- /.progress-group -->
                                 <div class="progress-group">
-                                    <span class="progress-text">Mois</span>
-                                    <span class="progress-number"><b>{{$passages->monthly}}</b></span>
+                                    <span class="progress-text">Clients</span>
+                                    <span class="progress-number"><b>{{$client}}</b></span>
 
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-red" style="width: 80%"></div>
@@ -78,8 +78,8 @@
                                 </div>
                                 <!-- /.progress-group -->
                                 <div class="progress-group">
-                                    <span class="progress-text">Année</span>
-                                    <span class="progress-number"><b>{{$passages->yearly}}</b></span>
+                                    <span class="progress-text">Fideles</span>
+                                    <span class="progress-number"><b>{{$fidele}}</b></span>
 
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-green" style="width: 80%"></div>
@@ -94,26 +94,10 @@
                     <!-- ./box-body -->
                     <div class="box-footer">
                         <div class="row">
-                            <div class="col-sm-4 col-xs-6">
+                            <div class="col-sm-12 col-xs-12">
                                 <div class="description-block border-right">
-                                    <h5 class="description-header">{{$revenues->yearly}} FCFA</h5>
-                                    <span class="description-text">REVENUE ANNUELLE</span>
-                                </div>
-                                <!-- /.description-block -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-sm-4 col-xs-6">
-                                <div class="description-block border-right">
-                                    <h5 class="description-header">{{$revenues->monthly}} FCFA</h5>
-                                    <span class="description-text">REVENUE MENSUEL</span>
-                                </div>
-                                <!-- /.description-block -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-sm-4 col-xs-6">
-                                <div class="description-block border-right">
-                                    <h5 class="description-header">{{$revenues->daily}} FCFA</h5>
-                                    <span class="description-text">REVENUE JOURNALIERE</span>
+                                    <h5 class="description-header">$35,210.43</h5>
+                                    <span class="description-text">TOTAL REVENUE</span>
                                 </div>
                                 <!-- /.description-block -->
                             </div>
@@ -134,7 +118,7 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>{{$passage}}</h3>
 
                         <p>Passages</p>
                     </div>
@@ -149,7 +133,7 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3>53</h3>
+                        <h3>{{$vehicule}}</h3>
 
                         <p>Vehicules</p>
                     </div>
@@ -164,7 +148,7 @@
                 <!-- small box -->
                 <div class="small-box bg-yellow">
                     <div class="inner">
-                        <h3>44</h3>
+                        <h3>{{$client}}</h3>
 
                         <p>Clients</p>
                     </div>
@@ -179,7 +163,7 @@
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
-                        <h3>65</h3>
+                        <h3>{{$fidele}}</h3>
 
                         <p>Fideles</p>
                     </div>
@@ -198,7 +182,7 @@
             <section class="col-lg-7 connectedSortable">
                 <div class="box box-solid">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Activités du Jour</h3>
+                        <h3 class="box-title">Latest Orders</h3>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -214,25 +198,21 @@
                                 <tr>
                                     <th>Facture ID</th>
                                     <th>Client</th>
-                                    <th>Statut</th>
+                                    <th>Statuts</th>
                                     <th>Vehicule</th>
                                     <th>Lavage</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($activities as $activity)
-                                    <tr>
-                                        <td><a href="pages/examples/invoice.html">{{$activity->facture}}</a></td>
-                                        <td>{{$activity->nom}} {{$activity->prenoms}}</td>
-                                        @if($activity->fidele)
-                                            <td><span class="label label-success">Fidele</span></td>
-                                        @else
-                                            <td><span class="label label-default">Non fidele</span></td>
-                                        @endif
-                                        <td><span class="label label-primary">{{$activity->immatriculation}}</span></td>
-                                        <td>{{$activity->libelle}}</td>
-                                    </tr>
-                                @endforeach
+                                <tr>
+                                    <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                    <td>Call of Duty IV</td>
+                                    <td><span class="label label-success">Shipped</span></td>
+                                    <td><span class="label label-success">Shipped</span></td>
+                                    <td>
+                                        <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -240,8 +220,8 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">
-                        <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Nouveau Passage</a>
-                        <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">Voir +</a>
+                        <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+                        <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
                     </div>
                     <!-- /.box-footer -->
                 </div>
@@ -285,19 +265,19 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <ul class="products-list product-list-in-box">
-                            @foreach($recently as $recent)
-                                <li class="item">
-                                    <div class="product-img">
-                                        <img src="dist/img/default-50x50.gif" alt="Product Image">
-                                    </div>
-                                    <div class="product-info">
-                                        <a href="javascript:void(0)" class="product-title">{{$recent->immatriculation}}
-                                            <span class="label label-warning pull-right">{{$recent->montant}}</span></a>
-                                        <span class="product-description">{{$recent->libelle}}</span>
-                                    </div>
-                                </li>
-                                <!-- /.item -->
-                            @endforeach
+                            <li class="item">
+                                <div class="product-img">
+                                    <img src="dist/img/default-50x50.gif" alt="Product Image">
+                                </div>
+                                <div class="product-info">
+                                    <a href="javascript:void(0)" class="product-title">Samsung TV
+                                        <span class="label label-warning pull-right">$1800</span></a>
+                                    <span class="product-description">
+                          Samsung 32" 1080p 60Hz LED Smart HDTV.
+                        </span>
+                                </div>
+                            </li>
+                            <!-- /.item -->
                         </ul>
                     </div>
                     <!-- /.box-body -->
@@ -326,9 +306,9 @@
                             <!-- /.col -->
                             <div class="col-md-4">
                                 <ul class="chart-legend clearfix">
-                                    <li><i class="fa fa-circle-o text-red"></i> Leger</li>
+                                    <li><i class="fa fa-circle-o text-red"></i> Lourd</li>
                                     <li><i class="fa fa-circle-o text-green"></i> Moyen</li>
-                                    <li><i class="fa fa-circle-o text-yellow"></i> Lourd</li>
+                                    <li><i class="fa fa-circle-o text-yellow"></i> Leger</li>
                                 </ul>
                             </div>
                             <!-- /.col -->
@@ -338,26 +318,12 @@
                     <!-- /.box-body -->
                     <div class="box-footer no-padding">
                         <ul class="nav nav-pills nav-stacked">
-                            <li>
-                                <a>Categorie Leger
-                                    <span class="pull-right text-red">
-                                        {{(($categories->leger)/($categories->total))*100}}%
-                                    </span>
-                                </a>
+                            <li><a href="#">Categorie Lourd
+                                    <span class="pull-right text-red"><i class="fa fa-angle-down"></i> 12%</span></a></li>
+                            <li><a href="#">Categorie Moyen <span class="pull-right text-green"><i class="fa fa-angle-up"></i> 4%</span></a>
                             </li>
-                            <li>
-                                <a>Categorie Moyen
-                                    <span class="pull-right text-green">
-                                       {{(($categories->moyen)/($categories->total))*100}}%
-                                    </span>
-                                </a>
-                            </li>
-                            <li><a>Categorie Lourd
-                                    <span class="pull-right text-yellow">
-                                       {{(($categories->lourd)/($categories->total))*100}}%
-                                    </span>
-                                </a>
-                            </li>
+                            <li><a href="#">Categorie Leger
+                                    <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i> 0%</span></a></li>
                         </ul>
                     </div>
                     <!-- /.footer -->
@@ -411,23 +377,22 @@
             var pieChart       = new Chart(pieChartCanvas)
             var PieData        = [
                 {
-
-                    value    : '{{$categories->leger}}',
+                    value    : 700,
                     color    : '#f56954',
                     highlight: '#f56954',
-                    label    : 'Leger'
+                    label    : 'Chrome'
                 },
                 {
-                    value    : '{{$categories->moyen}}',
+                    value    : 500,
                     color    : '#00a65a',
                     highlight: '#00a65a',
-                    label    : 'Moyen'
+                    label    : 'IE'
                 },
                 {
-                    value    : '{{$categories->lourd}}',
+                    value    : 400,
                     color    : '#f39c12',
                     highlight: '#f39c12',
-                    label    : 'Lourd'
+                    label    : 'FireFox'
                 }
             ]
             var pieOptions     = {
@@ -478,7 +443,7 @@
                         pointStrokeColor    : '#c1c7d1',
                         pointHighlightFill  : '#fff',
                         pointHighlightStroke: 'rgba(220,220,220,1)',
-                        data                : [65, 59, 80, 81, 56, 55, 40, 55, 77, 33, 11, 80]
+                        data                : [{{$janvier}}, {{$fevrier}}, {{$mars}}, {{$avril}}, {{$mai}}, {{$juin}}, {{$juillet}}, {{$aout}}, {{$septembre}}, {{$octobre}}, {{$novembre}}, {{$decembre}}]
                     }
                 ]
             }
