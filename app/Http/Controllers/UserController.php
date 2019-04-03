@@ -11,11 +11,6 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     //
-
-    public function reporting(){
-        return view('reporting');
-    }
-
     public function profile(){
         return view('pages.profile', array('user' => Auth::user()));
     }
