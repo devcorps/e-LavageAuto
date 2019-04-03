@@ -39,17 +39,31 @@ class PassageController extends Controller
      */
     public function store(Request $request)
     {
-        $data = ([
-           'id_V' => $request->input('vehicule_id'),
-           'id_L' => $request->input('lav_id'),
-           'arrive' => $request->input('arrive'),
-           'depart' => $request->input('depart'),
-           'contact' => $request->input('contact'),
-           'tarif' => $request->input('tarif'),
-           'user_id' => auth()->user()->signature
-        ]);
+        $passage = new Passage();
+        $passage->facture = $this->generateRandomString(7);
+        $passage->vehicule_id = $request->input('vehicule_id');
+        $passage->lavage_id = $request->input('lav_id');
+        $passage->user_id = auth()->user()->signature;
+        $passage->montant = $request->input('tarif');
+        $passage->heureArrive = $request->input('arrive');
+        $passage->heureDepart = $request->input('depart');
+        $passage->save();
 
-        dd($data);
+        $vehicule = Vehicule::find($request->input('vehicule_id'));
+        $client = Client::find($vehicule->client_id);
+
+        flash('Le passage a été enregistrement')->success();
+        return view('passage.notif')->with('client', $client)->with('vehicule',$vehicule);
+    }
+
+    public  function generateRandomString($length = 20) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 
 
