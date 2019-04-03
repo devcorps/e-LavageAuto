@@ -25,7 +25,7 @@ Route::get('terms', 'PagesController@getTerms')->name('terms');
 
 Route::get('profile', 'UserController@profile')->name('profile');
 
-Route::get('reporting', 'UserController@reporting')->name('reporting');
+Route::get('reporting', 'ReportingController@index')->name('reporting');
 
 Route::post('profile', 'UserController@update_logo');
 
