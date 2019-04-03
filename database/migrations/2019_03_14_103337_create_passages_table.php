@@ -16,6 +16,7 @@ class CreatePassagesTable extends Migration
         Schema::create('passages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('facture');
+            $table->date('date');
             $table->unsignedBigInteger('vehicule_id');
             $table->unsignedBigInteger('lavage_id');
             $table->integer('montant');
