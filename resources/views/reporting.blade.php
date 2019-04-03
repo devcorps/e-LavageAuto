@@ -134,7 +134,7 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>{{$passage}}</h3>
 
                         <p>Passages</p>
                     </div>
@@ -149,7 +149,7 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3>53</h3>
+                       <h3>{{$vehicule}}</h3>
 
                         <p>Vehicules</p>
                     </div>
@@ -164,7 +164,7 @@
                 <!-- small box -->
                 <div class="small-box bg-yellow">
                     <div class="inner">
-                        <h3>44</h3>
+                        <h3>{{$client}}</h3>
 
                         <p>Clients</p>
                     </div>
@@ -179,7 +179,7 @@
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
-                        <h3>65</h3>
+                        <h3>{{$fidele}}</h3>
 
                         <p>Fideles</p>
                     </div>
