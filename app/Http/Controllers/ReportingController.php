@@ -1,106 +1,145 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 
 class ReportingController extends Controller
 {
-
     public function index(){
-        $user_id = Auth::user()->signature;
-        //variable contenants les mois
-        $janvier = date("m",strtotime("2019-01-01"));
-        $fevrier = date("m",strtotime("2019-02-01"));
-        $mars= date("m",strtotime("2019-03-01"));
-        $avril = date("m",strtotime("2019-04-01"));
-        $mai= date("m",strtotime("2019-05-01"));
-        $juin= date("m",strtotime("2019-06-01"));
-        $juillet = date("m",strtotime("2019-07-01"));
-        $aout = date("m",strtotime("2019-08-01"));
-        $septembre = date("m",strtotime("2019-09-01"));
-        $octobre = date("m",strtotime("2019-10-01"));
-        $novembre = date("m",strtotime("2019-11-01"));
-        $decembre = date("m",strtotime("2019-12-01"));
 
-        //données graphe
-        $jan = DB::Table('vehicules')->select('*')
-            ->where('user_id','=',$user_id)
-            ->whereMonth('created_at',"=",$janvier)
-            ->count('nombrePassage');
-        $fev = DB::Table('vehicules')->select('*')
-            ->where('user_id','=',$user_id)
-            ->whereMonth('created_at',"=",$fevrier)
-            ->count('nombrePassage');
-        $mar = DB::Table('vehicules')->select('*')
-            ->where('user_id','=',$user_id)
-            ->whereMonth('created_at',"=",$mars)
-            ->count('nombrePassage');
-        $avr = DB::Table('vehicules')->select('*')
-            ->where('user_id','=',$user_id)
-            ->whereMonth('created_at',"=",$avril)
-            ->count('nombrePassage');
-        $may = DB::Table('vehicules')->select('*')
-            ->where('user_id','=',$user_id)
-            ->whereMonth('created_at',"=",$mai)
-            ->count('nombrePassage');
-        $jun = DB::Table('vehicules')->select('*')
-            ->where('user_id','=',$user_id)
-            ->whereMonth('created_at',"=",$juin)
-            ->count('nombrePassage');
-        $jully = DB::Table('vehicules')->select('*')
-            ->where('user_id','=',$user_id)
-            ->whereMonth('created_at',"=",$juillet)
-            ->count('nombrePassage');
-        $agust = DB::Table('vehicules')->select('*')
-            ->where('user_id','=',$user_id)
-            ->whereMonth('created_at',"=",$aout)
-            ->count('nombrePassage');
-        $september = DB::Table('vehicules')->select('*')
-            ->where('user_id','=',$user_id)
-            ->whereMonth('created_at',"=",$septembre)
-            ->count('nombrePassage');
-        $october = DB::Table('vehicules')->select('*')
-            ->where('user_id','=',$user_id)
-            ->whereMonth('created_at',"=",$octobre)
-            ->count('nombrePassage');
-        $november = DB::Table('vehicules')->select('*')
-            ->where('user_id','=',$user_id)
-            ->whereMonth('created_at',"=",$novembre)
-            ->count('nombrePassage');
-        $december = DB::Table('vehicules')->select('*')
-            ->where('user_id','=',$user_id)
-            ->whereMonth('created_at',"=",$decembre)
-            ->count('nombrePassage');
-
-        //données reporting
-
-        $passage = DB::Table('vehicules')->select('*')->where('user_id','=',$user_id)
-            ->count('nombrePassage');
-        $vehicule = DB::Table('vehicules')->select('*')->where('user_id','=',$user_id)->count('marque');
-        $client = DB::Table('clients')->select('*')->where('user_id','=',$user_id)->count();
-        $fidele = DB::Table('clients')->select('*')
-            ->where('user_id','=',$user_id)->
-            where('fidele','=','1')->count();
-        //dd($date);
+        $recently = $this->recently();
+        $activities = $this->activiteJour();
+        $categories =$this->categorieStat();
+        $passage = $this->passageStat();
+        $revenues = $this->revenue();
         return view('reporting')
-                    ->with('passage',$passage)
-                    ->with('vehicule',$vehicule)
-                    ->with('client',$client)
-                    ->with('fidele',$fidele)
-                    ->with('janvier',$jan)
-                    ->with('fevrier',$fev)
-                    ->with('mars',$mar)
-                    ->with('avril',$avr)
-                    ->with('mai',$may)
-                    ->with('juin',$jun)
-                    ->with('juillet',$jully)
-                    ->with('aout',$agust)
-                    ->with('septembre',$september)
-                    ->with('octobre',$october)
-                    ->with('novembre',$november)
-                    ->with('decembre',$december);
+            ->with('recently',$recently)
+            ->with('activities',$activities)
+            ->with('categories',$categories)
+            ->with('passages',$passage)
+            ->with('revenues',$revenues);
+    }
 
+    public function activiteJour(){
+        $date = Date::now();
+        $data = DB::table('passages')
+            ->join('vehicules','vehicule_id', '=', 'vehicules.id')
+            ->join('lavages','lavage_id', '=', 'lavages.id')
+            ->join('clients', 'vehicules.client_id', '=', 'clients.id')
+            ->select('facture', 'nom', 'prenoms', 'fidele', 'immatriculation', 'libelle')
+            ->where('passages.user_id', '=', auth()->user()->signature)
+            ->whereDate('passages.created_at', '=', $date)->get();
+        return $data;
+    }
+    public function recently(){
+        $data = DB::table('passages')
+            ->join('vehicules', 'vehicule_id', '=', 'vehicules.id')
+            ->join('lavages','lavage_id', '=', 'lavages.id')
+            ->select( 'montant', 'libelle', 'immatriculation', 'date')
+            ->where('passages.user_id', '=', auth()->user()->signature)
+            ->orderBy('passages.date', 'desc')
+            ->limit('5')
+            ->get();
+        return $data;
+    }
+
+    public function categorieStat(){
+        $leger = DB::table('passages')
+            ->join('lavages','lavage_id','=','lavages.id')
+            ->where('passages.user_id', '=', auth()->user()->signature)
+            ->where('categorie','=','leger')
+            ->count();
+
+        $moyen = DB::table('passages')
+            ->join('lavages','lavage_id','=','lavages.id')
+            ->where('passages.user_id', '=', auth()->user()->signature)
+            ->where('categorie','=','moyen')
+            ->count();
+
+        $lourd = DB::table('passages')
+            ->join('lavages','lavage_id','=','lavages.id')
+            ->where('passages.user_id', '=', auth()->user()->signature)
+            ->where('categorie','=','lourd')
+            ->count();
+
+        $totalCat = DB::table('passages')
+            ->join('lavages','lavage_id','=','lavages.id')
+            ->where('passages.user_id', '=', auth()->user()->signature)
+            ->count();
+        $data = ([
+            'leger' => $leger,
+            'moyen' => $moyen,
+            'lourd' => $lourd,
+            'total' => $totalCat
+        ]);
+        return (object)$data;
+    }
+
+    public function passageStat(){
+
+        $day = date('d');
+        $month = date('m');
+        $year = date('Y');
+
+        $daily = DB::table('passages')
+            ->where('passages.user_id', '=', auth()->user()->signature)
+            ->whereYear('date','=',$year)
+            ->whereMonth('date','=',$month)
+            ->whereDay('date','=',$day)
+            ->count();
+
+        $monthly = DB::table('passages')
+            ->where('passages.user_id', '=', auth()->user()->signature)
+            ->whereYear('date','=',$year)
+            ->whereMonth('date','=',$month)
+            ->count();
+
+        $yearly = DB::table('passages')
+            ->where('passages.user_id', '=', auth()->user()->signature)
+            ->whereYear('date','=',$year)
+            ->count();
+
+        $data = ([
+            'daily' => $daily,
+            'monthly' => $monthly,
+            'yearly' => $yearly
+        ]);
+        return (object)$data;
+    }
+
+    public function revenue(){
+
+        $day = date('d');
+        $month = date('m');
+        $year = date('Y');
+
+        $daily = DB::table('passages')
+            ->where('passages.user_id', '=', auth()->user()->signature)
+            ->whereYear('date','=',$year)
+            ->whereMonth('date','=',$month)
+            ->whereDay('date','=',$day)
+            ->sum('montant');
+
+
+        $monthly = DB::table('passages')
+            ->where('passages.user_id', '=', auth()->user()->signature)
+            ->whereYear('date','=',$year)
+            ->whereMonth('date','=',$month)
+            ->sum('montant');
+
+        $yearly = DB::table('passages')
+            ->where('passages.user_id', '=', auth()->user()->signature)
+            ->whereYear('date','=',$year)
+            ->sum('montant');
+
+        $data = ([
+            'daily' => $daily,
+            'monthly' => $monthly,
+            'yearly' => $yearly
+        ]);
+        return (object)$data;
     }
 }
