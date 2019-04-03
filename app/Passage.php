@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Passage extends Model
 {
     protected $fillable = [
-        'facture', 'contact', 'montant', 'heureArrive', 'heureDepart', 'vehicule_id', 'lavage_id', 'user_id',
+        'date', 'facture', 'contact', 'montant', 'heureArrive', 'heureDepart', 'vehicule_id', 'lavage_id', 'user_id',
     ];
 
     public function user()
