@@ -136,11 +136,7 @@
         <!-- this row will not appear when printing -->
         <div class="row no-print">
             <div class="col-xs-12">
-                 <button class"btn btn-default" onclick="myFunction()"><i class="fa fa-print"></i>Print</button>
-				  <script>
-					function myFunction() {
-						window.print();
-				}</script>
+                <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
                 <button type="button" class="btn btn-success pull-right"
                         data-vehicule_id={{$vehicule->id}}
                         data-lav_id={{$lavage->id}}
