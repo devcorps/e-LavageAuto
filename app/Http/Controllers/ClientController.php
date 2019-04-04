@@ -30,7 +30,14 @@ class ClientController extends Controller
     public function show($id)
     {
         $client = Client::find($id);
-        $cars = $client->vehicules;
+        $user_id = auth()->user()->signature;
+        $cars = DB::Table('vehicules')
+            ->join('passages','passages.vehicule_id', '=', 'vehicules.id')
+            ->select('immatriculation', 'marque','model', DB::raw('count(*) as nombrePassage'))
+            ->where('passages.user_id','=',$user_id)
+            ->where('vehicules.client_id','=',$id)
+            ->groupBy('immatriculation','marque','model')
+            ->get();
         return view('clients.vehicules')->with('client', $client)->with('vehicules', $cars);
     }
 
@@ -66,7 +73,8 @@ class ClientController extends Controller
         $user_id = auth()->user()->signature;
         $data = DB::table('clients')
             ->join('vehicules', 'clients.id', '=', 'vehicules.client_id')
-            ->select('clients.*', DB::raw('SUM(nombrePassage) as nombrePass'))
+            ->join('passages', 'vehicules.id','=','passages.vehicule_id')
+            ->select('clients.*', DB::raw('count(*) as nombrePass'))
             ->where('clients.user_id', '=', $user_id)
             ->groupBy('clients.id')
             ->orderByDesc('nombrePass')
