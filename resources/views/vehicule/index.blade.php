@@ -39,12 +39,11 @@
                             </thead>
                             <tbody>
                             @foreach($vehicules as $vehicule)
-
                                 <tr>
                                     <td>{{$vehicule->immatriculation}}</td>
                                     <td>{{$vehicule->marque}}</td>
                                     <td>{{$vehicule->model}}</td>
-                                    <td>{{$vehicule->client_id}}</td>
+                                    <td>{{$vehicule->nom}} {{$vehicule->prenoms}} </td>
                                     <td>{{$vehicule->created_at}}</td>
                                     <td>{{$vehicule->nombrePassage}}</td>
                                 </tr>
