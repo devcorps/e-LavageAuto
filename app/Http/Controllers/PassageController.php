@@ -40,6 +40,7 @@ class PassageController extends Controller
     public function store(Request $request)
     {
         $passage = new Passage();
+        $passage->date = date('Y-m-d');
         $passage->facture = $this->generateRandomString(7);
         $passage->vehicule_id = $request->input('vehicule_id');
         $passage->lavage_id = $request->input('lav_id');

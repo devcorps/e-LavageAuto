@@ -15,12 +15,17 @@ class ReportingController extends Controller
         $categories =$this->categorieStat();
         $passage = $this->passageStat();
         $revenues = $this->revenue();
+        $report = $this->recap();
+        $stats = $this->dataStation();
+
         return view('reporting')
             ->with('recently',$recently)
             ->with('activities',$activities)
             ->with('categories',$categories)
             ->with('passages',$passage)
-            ->with('revenues',$revenues);
+            ->with('revenues',$revenues)
+            ->with('recap',$report)
+            ->with('stats',$stats);
     }
 
     public function activiteJour(){
@@ -142,4 +147,129 @@ class ReportingController extends Controller
         ]);
         return (object)$data;
     }
+
+    public  function recap(){
+        $user_id = auth()->user()->signature;
+        $year = date('Y');
+
+        $jan = DB::Table('passages')
+            ->where('user_id','=',$user_id)
+            ->whereYear('date','=',$year)
+            ->whereMonth('date',"=",1)
+            ->count();
+
+        $fev = DB::Table('passages')
+            ->where('user_id','=',$user_id)
+            ->whereYear('date','=',$year)
+            ->whereMonth('date',"=",2)
+            ->count();
+
+        $mar = DB::Table('passages')
+            ->where('user_id','=',$user_id)
+            ->whereYear('date','=',$year)
+            ->whereMonth('date',"=",3)
+            ->count();
+
+        $avr = DB::Table('passages')
+            ->where('user_id','=',$user_id)
+            ->whereYear('date','=',$year)
+            ->whereMonth('created_at',"=",4)
+            ->count();
+
+        $may = DB::Table('passages')
+            ->where('user_id','=',$user_id)
+            ->whereYear('date','=',$year)
+            ->whereMonth('date',"=",5)
+            ->count();
+
+        $jun = DB::Table('passages')
+            ->where('user_id','=',$user_id)
+            ->whereYear('date','=',$year)
+            ->whereMonth('date',"=",6)
+            ->count();
+
+        $jully = DB::Table('passages')
+            ->where('user_id','=',$user_id)
+            ->whereYear('date','=',$year)
+            ->whereMonth('date',"=",7)
+            ->count();
+
+        $agust = DB::Table('passages')
+            ->where('user_id','=',$user_id)
+            ->whereYear('date','=',$year)
+            ->whereMonth('date',"=",8)
+            ->count();
+
+        $september = DB::Table('passages')
+            ->where('user_id','=',$user_id)
+            ->whereYear('date','=',$year)
+            ->whereMonth('date',"=",9)
+            ->count();
+
+        $october = DB::Table('passages')
+            ->where('user_id','=',$user_id)
+            ->whereYear('date','=',$year)
+            ->whereMonth('date',"=",10)
+            ->count();
+
+        $november = DB::Table('passages')
+            ->where('user_id','=',$user_id)
+            ->whereYear('date','=',$year)
+            ->whereMonth('date',"=",11)
+            ->count();
+
+        $december = DB::Table('passages')
+            ->where('user_id','=',$user_id)
+            ->whereYear('date','=',$year)
+            ->whereMonth('date',"=",12)
+            ->count();
+        $data =([
+            'jan' => $jan,
+            'fev' => $fev,
+            'mar' => $mar,
+            'avr' => $avr,
+            'mai' => $may,
+            'jui' => $jun,
+            'jul' => $jully,
+            'aou' => $agust,
+            'sep' => $september,
+            'oct' => $october,
+            'nov' => $november,
+            'dec' => $december,
+            'year' => $year
+        ]);
+
+        return (object)$data;
+    }
+
+    public function dataStation(){
+        $user_id = auth()->user()->signature;
+
+        $passage = DB::Table('passages')
+            ->where('user_id','=',$user_id)
+            ->count();
+
+        $vehicule = DB::Table('vehicules')
+            ->where('user_id','=',$user_id)
+            ->count();
+
+        $client = DB::Table('clients')
+            ->where('user_id','=',$user_id)
+            ->count();
+
+        $fidele = DB::Table('clients')
+            ->where('user_id','=',$user_id)
+            ->where('fidele','=',1)
+            ->count();
+
+        $data = ([
+            'wash' => $passage,
+            'car' => $vehicule,
+            'client' => $client,
+            'loyal' => $fidele
+        ]);
+
+        return (object)$data;
+    }
+
 }

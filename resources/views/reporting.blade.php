@@ -46,7 +46,7 @@
                         <div class="row">
                             <div class="col-md-10">
                                 <p class="text-center">
-                                    <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+                                    <strong>Activities: 1 Jan, {{$recap->year}} - 31 Dec, {{$recap->year}}</strong>
                                 </p>
 
                                 <div class="chart">
@@ -149,7 +149,7 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                       <h3>{{$vehicule}}</h3>
+                        <h3>{{$stats->car}}</h3>
 
                         <p>Vehicules</p>
                     </div>
@@ -478,7 +478,19 @@
                         pointStrokeColor    : '#c1c7d1',
                         pointHighlightFill  : '#fff',
                         pointHighlightStroke: 'rgba(220,220,220,1)',
-                        data                : [65, 59, 80, 81, 56, 55, 40, 55, 77, 33, 11, 80]
+                        data                : [
+                            '{{$recap->jan}}',
+                            '{{$recap->fev}}',
+                            '{{$recap->mar}}',
+                            '{{$recap->avr}}',
+                            '{{$recap->mai}}',
+                            '{{$recap->jui}}',
+                            '{{$recap->jul}}',
+                            '{{$recap->aou}}',
+                            '{{$recap->sep}}',
+                            '{{$recap->oct}}',
+                            '{{$recap->nov}}',
+                            '{{$recap->dec}}']
                     }
                 ]
             }
