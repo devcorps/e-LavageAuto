@@ -134,7 +134,7 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                        <h3>{{$passage}}</h3>
+                        <h3>{{$stats->wash}}</h3>
 
                         <p>Passages</p>
                     </div>
@@ -164,7 +164,7 @@
                 <!-- small box -->
                 <div class="small-box bg-yellow">
                     <div class="inner">
-                        <h3>{{$client}}</h3>
+                        <h3>{{$stats->client}}</h3>
 
                         <p>Clients</p>
                     </div>
@@ -179,7 +179,7 @@
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
-                        <h3>{{$fidele}}</h3>
+                        <h3>{{$stats->loyal}}</h3>
 
                         <p>Fideles</p>
                     </div>
@@ -336,6 +336,7 @@
                         <!-- /.row -->
                     </div>
                     <!-- /.box-body -->
+                    @if($categories->total)
                     <div class="box-footer no-padding">
                         <ul class="nav nav-pills nav-stacked">
                             <li>
@@ -362,6 +363,33 @@
                     </div>
                     <!-- /.footer -->
                 </div>
+                @else
+                    <div class="box-footer no-padding">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li>
+                                <a>Categorie Leger
+                                    <span class="pull-right text-red">
+                                        0%
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a>Categorie Moyen
+                                    <span class="pull-right text-green">
+                                      0%
+                                    </span>
+                                </a>
+                            </li>
+                            <li><a>Categorie Lourd
+                                    <span class="pull-right text-yellow">
+                                      0%
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.footer -->
+                @endif
             </section>
             <!-- right col -->
         </div>
