@@ -36,7 +36,9 @@ class ReportingController extends Controller
             ->join('clients', 'vehicules.client_id', '=', 'clients.id')
             ->select('facture', 'nom', 'prenoms', 'fidele', 'immatriculation', 'libelle')
             ->where('passages.user_id', '=', auth()->user()->signature)
-            ->whereDate('passages.created_at', '=', $date)->get();
+            ->whereDate('passages.created_at', '=', $date)
+            ->limit(12)
+            ->get();
         return $data;
     }
     public function recently(){

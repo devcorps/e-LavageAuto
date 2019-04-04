@@ -20,6 +20,7 @@ class VehiculeController extends Controller
             ->join('passages','passages.vehicule_id', '=', 'vehicules.id')
             ->join('clients','vehicules.client_id', '=','clients.id')
             ->select('immatriculation', 'marque','model', 'nom', 'prenoms', 'vehicules.created_at', DB::raw('count(*) as nombrePassage'))
+            ->where('vehicules.user_id','=',$user_id)
             ->groupBy('immatriculation','marque','model', 'nom', 'prenoms', 'vehicules.created_at')
             ->get();
         return view('vehicule.index', array('vehicules'=>$data));

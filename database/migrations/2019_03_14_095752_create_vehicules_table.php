@@ -20,7 +20,6 @@ class CreateVehiculesTable extends Migration
             $table->string('marque');
             $table->string('model');
             $table->string('categorie');
-            $table->integer('nombrePassage');
             $table->uuid('user_id');
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
             $table->foreign('user_id')->references('signature')->on('users')->onDelete('cascade');

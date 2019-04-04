@@ -240,8 +240,7 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">
-                        <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Nouveau Passage</a>
-                        <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">Voir +</a>
+                        <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-left">Voir +</a>
                     </div>
                     <!-- /.box-footer -->
                 </div>
